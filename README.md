@@ -6,11 +6,11 @@ Without framework ou externals projects.
 
 ## Integration
 ```
-require_once('compress_simple');
-require_once('rsa_simple');
-require_once('cert_simple');
-require_once('pgp_simple');
-require_once('crypto_simple');
+require_once('compress_simpl.php');
+require_once('rsa_simple.php');
+require_once('cert_simple.php');
+require_once('pgp_simple.php');
+require_once('crypto_simple.php');
 
 class YourClass {
 
