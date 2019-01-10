@@ -5,6 +5,11 @@ with ou without pgp and a rsa implementation + cert management + compress data.
 Without framework ou externals projects.
 
 ## Integration
+
+You need php (no need any webserver) compiled with :
+* penssl extension and
+* gnupg extension.
+
 ```
 require_once('compress_simple.php');
 require_once('rsa_simple.php');
