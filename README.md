@@ -3,8 +3,6 @@
 A trait for crypt and uncrypt very easly with ou without pgp and a rsa implementation + cert management and compress data
 
 ```
-<?
-
 class YourClass {
 
   use Crypto_simple;
