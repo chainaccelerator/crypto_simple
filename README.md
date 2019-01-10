@@ -1,11 +1,20 @@
 # crypto_simple
 
-A trait for crypt and uncrypt very easly with ou without pgp and a rsa implementation + cert management and compress data
+A trait for crypt and uncrypt very easly 
+with ou without pgp and a rsa implementation + cert management + compress data.
+Without framework ou externals projects.
 
+## Integration
 ```
+require_once('compress_simple');
+require_once('rsa_simple');
+require_once('cert_simple');
+require_once('pgp_simple');
+require_once('crypto_simple');
+
 class YourClass {
 
-  use Crypto_simple;
+  use Crypto_simple; // <- here :)
 }
 ```
 
