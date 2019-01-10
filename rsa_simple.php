@@ -74,6 +74,4 @@ trait Rsa_simple
 
         return $msg_decrypted;
     }
-
-}
 }
