@@ -10,21 +10,28 @@ trait Pgp_simple {
     private static $pgp_passphrase_file = '../data/pgp/passphrase.pgp';
     private static $pgp_passphrase;
 
-    private static function php_init(){
+    private static function pgp_init(string $pgp_passphrase){
 
         putenv('GNUPGHOME='.self::$pgp_env);
 
         self::$pgp_resource = gnupg_init();
-        self::$pgp_passphrase = file_get_contents(self::$pgp_passphrase_file);
+        file_put_contents(self::$pgp_passphrase_file, $pgp_passphrase);
 
         return true;
+    }
+
+    private static function pgp_passphrase_get() {
+
+        return file_get_contents(self::$pgp_passphrase_file);
     }
 
     private function pgp_crypt(string $msg)
     {
         $session_key = hash(self::$rsa_digest_alg, self::rsa_public_key_get() . time() . uniqid());
 
-        gnupg_addencryptkey(self::$pgp_resource, $session_key, self::$pgp_passphrase);
+        $pgp_passphrase = self::pgp_passphrase_get();
+
+        gnupg_addencryptkey(self::$pgp_resource, $session_key, $pgp_passphrase);
 
         $msg_crypted = gnupg_encrypt(self::$pgp_resource, $msg);
 
@@ -35,7 +42,7 @@ trait Pgp_simple {
         return $cypher;
     }
 
-    public function pgp_uncrypt(string $cypher) {
+    public function pgp_uncrypt(string $cypher, string $pgp_passphrase) {
 
         $cypher_parts = explode(self::$pgp_separator, $cypher);
         $msg_crypted = $cypher_parts[0];
@@ -43,7 +50,7 @@ trait Pgp_simple {
         $session_key = self::rsa_uncrypt($session_key_crypted);
         $plaintext = "";
 
-        gnupg_adddecryptkey(self::$pgp_resource, $session_key, self::$pgp_passphrase);
+        gnupg_adddecryptkey(self::$pgp_resource, $session_key, $pgp_passphrase);
 
         gnupg_decryptverify(self::$pgp_resource, $cypher, $plaintext);
 

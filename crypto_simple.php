@@ -6,14 +6,19 @@ Trait Crypto_simple {
 
   private static $crypt_pgp_state = true;
 
-  private function crypto_init(string $countryName,
+  private function crypto_init(
+                          string $crypt_pgp_state,
+                          string $countryName,
                           string $stateOrProvinceName,
                           string $localityName,
                           string $organizationName,
                           string $organizationalUnitName,
                           string $commonName,
                           string $emailAddress,
-                          string $password){
+                          string $password,
+                          string $pgp_passphrase){
+
+      self::$crypt_pgp_state = $crypt_pgp_state;
 
       self::rsa_init();
       self::cert_init($countryName,
@@ -23,6 +28,8 @@ Trait Crypto_simple {
           $commonName,
           $emailAddress,
           $password);
+
+      self::pgp_init($pgp_passphrase);
 
       return true;
   }

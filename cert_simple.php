@@ -15,9 +15,6 @@ trait Cert_simple {
     public function cert_client_set(string $cert_client){
 
         $this->cert_client = $cert_client;
-    }
-
-    public function cert_user_data_set(
 
         return true;
     }
