@@ -6,8 +6,8 @@ Without framework ou externals projects.
 
 ## Integration
 
-You need php (no need any webserver) compiled with :
-* penssl extension and
+You need PHP PHP 7.3.1+  (no need any webserver) compiled with :
+* openssl extension and
 * gnupg extension.
 
 ```
