@@ -11,7 +11,7 @@ class YourClass {
 }
 ```
 
-# Just one time (isntall)
+## Just one time (install)
 in YourClass, code call :
 ```
 self::crypto_init(
@@ -26,22 +26,22 @@ self::crypto_init(
                     $password,
                     $pgp_passphrase); 
 ```
-# After
+## After
 
 A want to send a crypted message to B, only B can read
 
-## A side
+### A side
 ```
 $text4B = 'A text for B';
 $instanceA = new YourClass();
 $cypher = $instanceA->crypt($text4B);
 echo $cypher;
 ```
-## B side
+### B side
 ```
 $instanceB = new YourClass();
 $text4B = $instanceA->uncrypt($cypher);
 echo $text4B;
 ```
 
-## Welcome to enriching this work base with you!
+# Welcome to enriching this work base with you!
