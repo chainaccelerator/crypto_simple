@@ -24,7 +24,7 @@ class YourClass {
 ```
 
 ## Just one time (install)
-in YourClass, code call :
+in YourClass call :
 ```
 self::crypto_init(
                     $crypt_pgp_state,
