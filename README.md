@@ -3,6 +3,7 @@
 A trait for crypt and uncrypt very easly 
 with ou without pgp and a rsa implementation + cert management + compress data.
 Without framework ou externals projects.
+FOR LEARNING AND PLAY WITH CRYPTO
 
 ## Integration
 
