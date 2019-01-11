@@ -4,7 +4,7 @@ trait Pgp_simple {
 
     use Rsa_simple;
 
-    private static $pgp_env = '/var/www/example.com/.gnupg';
+    private static $pgp_env = '../data/pgp/.gnupg';
     private static $pgp_separator = '____PGP_CUSTOM_SEP____';
     private static $pgp_resource;
     private static $pgp_passphrase_file = '../data/pgp/passphrase.pgp';

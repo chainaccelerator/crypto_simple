@@ -31,6 +31,8 @@ Trait Crypto_simple {
           $options['emailAddress'],
           $options['password'],
           $options['pgp_passphrase']);
+
+
   }
 
   private function crypto_init(

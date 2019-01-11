@@ -1,0 +1,7 @@
+<?
+
+trait Seed_simple
+{
+
+
+}
