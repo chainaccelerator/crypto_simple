@@ -56,10 +56,10 @@ trait Seed_simple
         $rsa_private_key_master_bin_str = sprintf("%04b", $rsa_private_key_master);
         $checksum_str = substr($rsa_private_key_master_bin_str, -4);
         list($checksum) = sscanf($checksum_str, '%04b');
-        $entropy132bits = $rsa_private_key_master . $checksum;
+        $entropy132bits = $rsa_private_key_master . $checksum; // @todo concat
 
         $entropy132bits_bin_str = sprintf("%04b", $entropy132bits);
-        $entropy132bits_bin_str_parts = split('', $entropy132bits_bin_str);
+        $entropy132bits_bin_str_parts = str_split($entropy132bits_bin_str, 1);
 
         foreach ($entropy132bits_bin_str_parts as $entropy132bits_bin_str_part) {
 
