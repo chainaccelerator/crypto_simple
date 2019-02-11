@@ -18,6 +18,7 @@ Trait Crypto_simple {
       $shortopts .= "emailAddress:";
       $shortopts .= "password:";
       $shortopts .= "pgp_passphrase:";
+      $shortopts .= "seed_grain:";
       $options = getopt($shortopts);
 
       return self::crypto_init(
@@ -30,22 +31,23 @@ Trait Crypto_simple {
           $options['commonName'],
           $options['emailAddress'],
           $options['password'],
-          $options['pgp_passphrase']);
-
-
+          $options['pgp_passphrase'],
+          $options['seed_grain']);
   }
 
   private function crypto_init(
-                          bool $crypt_pgp_state,
-                          string $countryName,
-                          string $stateOrProvinceName,
-                          string $localityName,
-                          string $organizationName,
-                          string $organizationalUnitName,
-                          string $commonName,
-                          string $emailAddress,
-                          string $password,
-                          string $pgp_passphrase){
+      bool $crypt_pgp_state,
+      string $countryName,
+      string $stateOrProvinceName,
+      string $localityName,
+      string $organizationName,
+      string $organizationalUnitName,
+      string $commonName,
+      string $emailAddress,
+      string $password,
+      string $pgp_passphrase,
+      string $seed_grain)
+  {
 
       self::$crypt_pgp_state = $crypt_pgp_state;
 
@@ -59,6 +61,7 @@ Trait Crypto_simple {
           $password);
 
       self::pgp_init($pgp_passphrase);
+      self::seed_init($seed_grain);
 
       return true;
   }
