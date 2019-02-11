@@ -32,7 +32,7 @@ trait Rsa_simple
         return true;
     }
 
-    private static function rsa_public_key_get(){
+    public static function rsa_public_key_get(){
 
        return file_get_contents(self::$rsa_public_key_file);
     }
