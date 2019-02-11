@@ -92,7 +92,7 @@ trait Seed_simple
 
         $this->seed_mnemonic_set($mnemonic_str);
 
-        self::seed_mnemonic_file_write(stdclass $seed_private_key_master_str);
+        self::seed_mnemonic_file_write($seed_private_key_master_str);
 
         return $this->mnemonic;
     }
