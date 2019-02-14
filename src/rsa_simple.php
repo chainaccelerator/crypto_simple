@@ -27,7 +27,7 @@ trait Rsa_simple
 
         $pubKey = openssl_pkey_get_details($res);
 
-        file_put_contents(self::$rsa_private_key_file, $pubKey["key"]);
+        file_put_contents(self::$rsa_public_key_file, $pubKey["key"]);
 
         return true;
     }
