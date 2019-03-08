@@ -2,7 +2,7 @@
 
 Trait Crypto_simple {
 
-    use Compress_simple, Ppg_simple, Cert_simple, Seed_simple;
+    use Compress_simple, Ppg_simple, Cert_simple, Seed_simple, Sign_simple;
 
   public static $crypt_pgp_state = true;
 
