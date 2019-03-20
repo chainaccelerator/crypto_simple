@@ -1,12 +1,21 @@
 <?
 
+/**
+ * Trait Crypto_simple
+ */
 Trait Crypto_simple {
 
     use Compress_simple, Ppg_simple, Cert_simple, Seed_simple, Sign_simple;
 
-  public static $crypt_pgp_state = true;
+    /**
+     * @var bool
+     */
+    public static $crypt_pgp_state = true;
 
-  public static function crypto_install(){
+    /**
+     * @return bool
+     */
+    public static function crypto_install(){
 
       $shortopts = "crypt_pgp_state:";
       $shortopts .= "countryName:";
@@ -35,7 +44,21 @@ Trait Crypto_simple {
           $options['seed_grain']);
   }
 
-  private function crypto_init(
+    /**
+     * @param bool $crypt_pgp_state
+     * @param string $countryName
+     * @param string $stateOrProvinceName
+     * @param string $localityName
+     * @param string $organizationName
+     * @param string $organizationalUnitName
+     * @param string $commonName
+     * @param string $emailAddress
+     * @param string $password
+     * @param string $pgp_passphrase
+     * @param string $seed_grain
+     * @return bool
+     */
+    private function crypto_init(
       bool $crypt_pgp_state,
       string $countryName,
       string $stateOrProvinceName,
@@ -66,7 +89,12 @@ Trait Crypto_simple {
       return true;
   }
 
-  public function crypt(string $msg, string $public_key) {
+    /**
+     * @param string $msg
+     * @param string $public_key
+     * @return bool|string
+     */
+    public function crypt(string $msg, string $public_key) {
 
     // process
     $msg = self::compress($msg);
@@ -77,7 +105,11 @@ Trait Crypto_simple {
     return $cypher;
   }
 
-  public function uncrypt(string $cypher) {
+    /**
+     * @param string $cypher
+     * @return bool|string
+     */
+    public function uncrypt(string $cypher) {
 
     if(self::$crypt_pgp_state === true) $msg = self::pgp_uncrypt($cypher);
     else                          $msg = self::rsa_uncrypt($cypher);
